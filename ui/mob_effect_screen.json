@@ -1,0 +1,224 @@
+{
+  "namespace": "mob_effect",
+
+  "title_label": {
+    "type": "image",
+    "texture": "textures/ui/hud_tip_text_background",
+    "anchor_from": "left_middle",
+    "anchor_to": "left_middle",
+    "alpha": 0.2,
+    "size": [ "100%c + 8px", "100%c + 4px" ],
+    "controls": [
+      {
+        "text": {
+          "type": "label",
+          "text": "key.mobEffects",
+          "text_alignment": "center",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 2,
+          "shadow": true,
+          "size": [ "default", 10 ]
+        }
+      }
+    ]
+  },
+
+  "exit_button": {
+    "type": "panel",
+    "anchor_from": "right_middle",
+    "anchor_to": "right_middle",
+    "size": [ 16, 16 ],
+    "controls": [
+      {
+        "background": {
+          "type": "image",
+          "texture": "textures/ui/hud_tip_text_background",
+          "alpha": 0.2,
+          "layer": 1
+        }
+      },
+      {
+        "content_button@common.button": {
+          "$pressed_button_name": "button.menu_exit",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 2,
+          "size": [ 14, 14 ],
+          "controls": [
+            {
+              "default": {
+                "type": "image",
+                "texture": "textures/ui/close_button_default_light"
+              }
+            },
+            {
+              "hover": {
+                "type": "image",
+                "texture": "textures/ui/close_X_button_hover",
+                "alpha": 0.6
+              }
+            },
+            {
+              "pressed": {
+                "type": "image",
+                "texture": "textures/ui/close_X_button",
+                "alpha": 0.8
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "header_stack_panel": {
+    "type": "panel",
+    "size": [ "100%", 16 ],
+    "controls": [
+      { "title@title_label": {} },
+      { "exit@exit_button": {} }
+    ]
+  },
+
+  "effect_icon": {
+    "type": "image",
+    "texture": "textures/ui/hud_tip_text_background",
+    "alpha": 0.4,
+    "size": [ 24, 24 ],
+    "bindings": [],
+    "controls": [
+      {
+        "icon": {
+          "type": "image",
+          "texture": "#texture",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 4,
+          "size": [ "100% - 4px", "100% - 4px" ],
+          "bindings": [
+            {
+              "binding_type": "collection",
+              "binding_name": "#texture",
+              "binding_collection_name": "mob_effects_collection",
+              "binding_condition": "visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "effect_name": {
+    "shadow": true,
+    "size": [ "default", 12 ],
+    "offset": [ 2, 0 ]
+  },
+
+  "effect_timer": {
+    "shadow": true,
+    "alpha": 0.8,
+    "size": [ "default", 14 ],
+    "offset": [ 2, 2 ]
+  },
+
+  "mob_effect_grid_item": {
+    "size": [ "100%", 28 ],
+    "controls": [
+      {
+        "background": {
+          "type": "image",
+          "texture": "textures/ui/hud_tip_text_background",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 1,
+          "alpha": 0.4,
+          "size": [ "100% - 2px", "100% - 2px" ]
+        }
+      },
+      {
+        "stack_panel": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 4,
+          "size": [ "100% - 4px", "100% - 4px" ],
+          "controls": [
+            { "icon@effect_icon": {} },
+            { "stack_panel": {
+              "type": "stack_panel",
+              "size": [ "100%c", "100%" ],
+              "controls": [
+                { "name@effect_name": {} },
+                { "timer@effect_timer": {} }
+              ]
+            } }
+          ]
+        }
+      }
+    ]
+  },
+
+  "mob_effect_grid": {
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ "100%", "default" ],
+    "offset": [ 0, 0]
+  },
+
+  "main_panel": {
+    "type": "stack_panel",
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      { "header@mob_effect.header_stack_panel": {} },
+      { "padding0": {
+        "type": "panel",
+        "size": [ 0, 2 ]
+      } },
+      {
+        "background": {
+          "type": "image",
+          "texture": "textures/ui/hud_tip_text_background",
+          "alpha": 0.2,
+          "size": [ "100%", "fill" ],
+          "controls": [
+            {
+              "scroll_panel": {
+                "type": "panel",
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "layer": 3,
+                "size": [ "100% - 4px", "100% - 4px" ],
+                "clips_children": true,
+                "controls": [
+                  {
+                    "scrolling_panel@common.scrolling_panel": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "$scrolling_content": "mob_effect.mob_effect_grid_panel",
+                      "$show_background": false,
+                      "$scrolling_pane_size": [ "100% - 4px", "100% - 4px" ],
+                      "$scroll_size": [ 4, "100% - 8px" ],
+                      "size": [ "100%", "100%" ],
+                      "offset": [ 1, 1 ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "main_screen": {
+    "size": [ 208, 186 ],
+    "controls": [
+      { "main@mob_effect.main_panel": {} }
+    ]
+  }
+}

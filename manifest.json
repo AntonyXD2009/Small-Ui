@@ -1,0 +1,19 @@
+{
+  "format_version": 2,
+
+  "header": {
+    "name": "Small Ui",
+    "description": "Small Ui v1.0.7",
+    "uuid": "317b8c35-dbea-4175-9620-6ea90ae468ef",
+    "min_engine_version": [ 1, 20, 0 ],
+    "version": [ 1, 0, 0 ]
+  },
+
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "8ba61caf-3138-4a81-b834-dd5b4a36a23f",
+      "version": [ 1, 0, 0 ]
+    }
+  ]
+}
